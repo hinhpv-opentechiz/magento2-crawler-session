@@ -8,11 +8,17 @@ use FriendsOfHyva\CrawlerSession\Model\Logger;
 
 class LogService
 {
-    private bool $alreadyLogged = false;
+    private $alreadyLogged = false;
+
+    /**
+     * @var Logger
+     */
+    private $logger;
 
     public function __construct(
-        private readonly Logger $logger,
+        Logger $logger
     ) {
+        $this->logger = $logger;
     }
 
     public function log(string $userAgent): void

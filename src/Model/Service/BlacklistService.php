@@ -9,10 +9,21 @@ use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
 class BlacklistService
 {
+    /**
+     * @var Config
+     */
+    private $config;
+    /**
+     * @var CrawlerDetect
+     */
+    private $crawlerDetect;
+
     public function __construct(
-        private readonly Config $config,
-        private readonly CrawlerDetect $crawlerDetect
+        Config $config,
+        CrawlerDetect $crawlerDetect
     ) {
+        $this->config = $config;
+        $this->crawlerDetect = $crawlerDetect;
     }
 
     public function isBlacklisted(string $userAgent): bool

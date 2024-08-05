@@ -8,9 +8,15 @@ use FriendsOfHyva\CrawlerSession\Helper\Config;
 
 class WhitelistService
 {
+    /**
+     * @var Config
+     */
+    private $config;
+
     public function __construct(
-        private readonly Config $config
+        Config $config
     ) {
+        $this->config = $config;
     }
 
     public function isWhitelisted(string $userAgent): bool
